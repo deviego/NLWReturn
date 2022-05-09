@@ -4,13 +4,14 @@ import html2canvas from "html2canvas"
 import { Loading } from "./Loading";
 
 interface ScreenshotButtonProps{
-    screenshot: string;
-    onScreenshotTook:(screenshot:string) => void
+    screenshot: string | null;
+    onScreenshotTook:(screenshot:string | null) => void;
 }
 
 
 
-export function ScreenshotButton({screenshot,onScreenshotTook}:ScreenshotButtonProps) {
+export function ScreenshotButton({screenshot,
+    onScreenshotTook}:ScreenshotButtonProps) {
 
     const [isTakingScreenshot, setIsTakingScreenshot] = useState(false)
 
@@ -29,9 +30,10 @@ export function ScreenshotButton({screenshot,onScreenshotTook}:ScreenshotButtonP
         return (
             <button
             type="button"
+            onClick={() =>onScreenshotTook(null)}
             className="p-1 w-10 h-10 rounded-md border-transparent flex justify-end items-end text-zinc-400 hover:text-zinc-100 transition-colors "
             style={{
-                backgroundImg: `url(${screenshot})`,
+                backgroundImage: `url(${screenshot})`,
             }}
             
             >

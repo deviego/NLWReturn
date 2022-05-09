@@ -11,7 +11,7 @@ interface FeedbackContentStepProps {
 
 export function FeedbackContentStep({feedbackType, onFeedbackRestartRequest}: FeedbackContentStepProps){
 
-  const[screenshot, setScreenshot] = useState<string | null>(null)
+  const[screenshot, setScreenshot] = useState<string | null >(null)
 
     const feedBackTypeInfo = feedbackTypes[feedbackType]
     return (
