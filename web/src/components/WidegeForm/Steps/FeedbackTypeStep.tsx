@@ -8,9 +8,11 @@ interface FeedbackTypeStepProp {
 export function FeedbackTypeStep({
   onFeedbackTypechange,
 }: FeedbackTypeStepProp) {
+  
+  
   return (
     <>
-      <header>
+      <header>             
         <span className="text-xl leading-6 ">Deixe seu Feedback</span>
 
         <CloseButton />
@@ -33,4 +35,6 @@ export function FeedbackTypeStep({
       </div>
     </>
   );
+
+
 }
