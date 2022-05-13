@@ -1,8 +1,9 @@
 // imports
 import express from "express";
-import { routes } from "./routs";
+import { routes } from "./routes";
 
 let app = express();
+
 app.use(express.json());
 
 

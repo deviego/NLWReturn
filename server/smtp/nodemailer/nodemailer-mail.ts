@@ -1,7 +1,5 @@
-import express from 'express'
-import nodemailer from 'nodemailer'
+import { MailAdapter, sendMailData } from "../send";
 
-export const routes = express.Router()
 
 const transport = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
@@ -12,10 +10,9 @@ const transport = nodemailer.createTransport({
     },
   });
 
-routes.post("/feedback", async (req, res) => {
-    const { type, comment, screenshot } = req.body;
-    const feedback = 
   
+export class nodemailerMail implements MailAdapter {
+  async sendMail(data: sendMailData) {
     await transport.sendMail({
       from: "Equipe Feeget <oi@feedget.com>",
       to: "Deviego <diegodomingues266@gmail.com>",
@@ -27,7 +24,5 @@ routes.post("/feedback", async (req, res) => {
         `</div>`,
       ].join("\n"),
     });
-  
-    return res.status(201).json({ data: feedback });
-  });
-  
+  }
+}
