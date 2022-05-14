@@ -1,4 +1,6 @@
+import nodemailer from 'nodemailer'
 import { MailAdapter, sendMailData } from "../send";
+
 
 
 const transport = nodemailer.createTransport({
@@ -12,17 +14,12 @@ const transport = nodemailer.createTransport({
 
   
 export class nodemailerMail implements MailAdapter {
-  async sendMail(data: sendMailData) {
+  async sendMail({subject, body}: sendMailData) {
     await transport.sendMail({
       from: "Equipe Feeget <oi@feedget.com>",
       to: "Deviego <diegodomingues266@gmail.com>",
-      subject: "Novo feedback",
-      html: [
-        `<div style="font-family: sans-serif; font-size: 16px; color: #111">`,
-        `<p>Tipo do Feedback: ${type}</p>`,
-        `<p> Comentário: ${comment}</p>`,
-        `</div>`,
-      ].join("\n"),
+      subject,
+      html:body
     });
   }
 }
